@@ -2,8 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
+    branches: ["main"]
 
 jobs:
   build-test-deploy:
@@ -16,7 +15,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: "3.10"
 
       - name: Install dependencies
         run: |
@@ -26,7 +25,7 @@ jobs:
       - name: Run tests
         run: pytest
 
-      - name: Log in to GHCR
+      - name: Login to GHCR
         uses: docker/login-action@v2
         with:
           registry: ghcr.io
@@ -34,9 +33,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build Docker image
-        run: |
-          docker build -t ghcr.io/lapkinvladimir/iris-streamlit:latest .
+        run: docker build -t ghcr.io/lapkinvladimir/iris-streamlit:latest .
 
       - name: Push Docker image
-        run: |
-          docker push ghcr.io/lapkinvladimir/iris-streamlit:latest
+        run: docker push ghcr.io/lapkinvladimir/iris-streamlit:latest
