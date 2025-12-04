@@ -4,6 +4,10 @@ on:
   push:
     branches: ["main"]
 
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   build-test-deploy:
     runs-on: ubuntu-latest
@@ -33,7 +37,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build Docker image
-        run: docker build -t ghcr.io/lapkinvladimir/iris-streamlit:latest .
+        run: docker build -t ghcr.io/${{ github.repository }}:latest .
 
       - name: Push Docker image
-        run: docker push ghcr.io/lapkinvladimir/iris-streamlit:latest
+        run: docker push ghcr.io/${{ github.repository }}:latest
