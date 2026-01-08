@@ -1,0 +1,14 @@
+{
+  "best_model": "SVM",
+  "metrics": {
+    "accuracy": 0.9666666666666667,
+    "precision_macro": 0.9696969696969697,
+    "recall_macro": 0.9666666666666667,
+    "f1_macro": 0.9665831244778612,
+    "roc_auc_ovr": 0.9966666666666667
+  },
+  "mlflow_run_id": "4b768d3c427e407ba0f95ebbd6af09ec",
+  "version": "v1.0.0",
+  "experiment": "iris-model-zoo",
+  "registered_model_name": "IrisModel"
+}

@@ -47,3 +47,7 @@ docker-compose.override.yml
 dist/
 build/
 *.egg-info/
+
+mlruns/
+*.png
+*.txt
