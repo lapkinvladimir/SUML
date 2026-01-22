@@ -51,3 +51,20 @@ build/
 mlruns/
 *.png
 *.txt
+
+# =========================
+# KEDRO / MLFLOW TRASH
+# =========================
+iris-kedro/mlruns/
+iris-kedro/.viz/
+.viz/
+
+# =========================
+# JUPYTER
+# =========================
+.ipynb_checkpoints/
+
+# =========================
+# KEDRO LOCAL CONF (секреты, токены и т.д.)
+# =========================
+iris-kedro/conf/local/
