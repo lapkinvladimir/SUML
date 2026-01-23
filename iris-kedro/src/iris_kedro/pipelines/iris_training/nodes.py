@@ -2,6 +2,7 @@ from typing import Dict, Tuple
 
 import mlflow
 import numpy as np
+import pandas as pd
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
@@ -15,17 +16,40 @@ import json
 from pathlib import Path
 import joblib
 
+from sklearn.model_selection import train_test_split
 
-def load_iris_data(test_size: float, random_state: int) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
-    """Загружает датасет Iris и делает train/test split."""
-    data = load_iris()
-    X = data.data
-    y = data.target
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from typing import Tuple
+
+from sklearn.model_selection import train_test_split
+
+
+def load_iris_data(iris: pd.DataFrame, test_size: float, random_state: int):
+    X = iris.drop(columns=["target"])
+    y = iris["target"]
 
     X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=test_size, random_state=random_state, stratify=y
+        X, y, test_size=test_size, random_state=random_state
     )
 
+    return X_train, X_test, y_train, y_test
+
+def split_features_and_target(iris: pd.DataFrame):
+    X = iris.drop(columns=["target"])
+    y = iris["target"]
+    return X, y
+
+
+def train_test_split_node(
+    X: pd.DataFrame,
+    y: pd.Series,
+    test_size: float,
+    random_state: int,
+):
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=test_size, random_state=random_state
+    )
     return X_train, X_test, y_train, y_test
 
 
