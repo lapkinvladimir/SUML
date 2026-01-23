@@ -1,20 +1,14 @@
-pip install -r requirements.txt
+test_size: 0.2
+random_state: 42
 
-pip install kedro kedro-mlflow kedro-viz kedro-datasets
+knn_n_neighbors: 5
 
-cd iris-kedro
+logreg_max_iter: 200
 
-kedro mlflow init
+svm_C: 1.0
+svm_kernel: "rbf"
 
-kedro run --pipeline iris_training
+rf_n_estimators: 100
 
-появится 2 файла:
-app/model.joblib
-app/model_meta.json
-
-kedro viz
-
-
-в другом терминале:
-streamlit run app/app.py
-
+model_output_path: "../app/model.joblib"
+model_meta_output_path: "../app/model_meta.json"
